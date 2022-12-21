@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ECharts</title>
+    <!-- 引入刚刚下载的 ECharts 文件 -->
+    <script src="js/echarts.js"></script>
+    <script src="js/chalk.js"></script>
+  </head>
+  <body>
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+    <div id="main" style="width: 600px; height:400px;position:absolut;left:50px;top:100px"></div>
+    <script type="text/javascript">
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(document.getElementById('main'),'chalk');  //要加js名字
+
+      // 指定图表的配置项和数据
+
+  var option = {
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    top: '5%',
+    left: 'center'
+  },
+  series: [
+    {
+      name: '各基站信号覆盖范围',
+      type: 'pie',
+      radius: ['40%', '70%'],
+      avoidLabelOverlap: false,
+      itemStyle: {
+        borderRadius: 10,
+        borderColor: '#fff',
+        borderWidth: 2
+      },
+      label: {
+        show: false,
+        position: 'center'
+      },
+      emphasis: {   //高亮
+        label: {
+          show: true,
+          fontSize: '40',
+          fontWeight: 'bold'
+        }
+      },
+      labelLine: {
+        show: false
+      },
+      data: [
+        { value: 8000, name: '2G (m)' },
+        { value: 4000, name: '3G (m)' },
+        { value: 2000, name: '4G (m)' },
+        { value: 250, name: '5G (m)' },
+      ]
+    }
+  ]
+};
+
+
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option);
+
+
+    </script>
+  </body>
+</html>

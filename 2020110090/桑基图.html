@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ECharts</title>
+    <!-- 引入刚刚下载的 ECharts 文件 -->
+    <script src="js/echarts.js"></script>
+    <script src="js/chalk.js"></script>
+  </head>
+  <body>
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+    <div id="main" style="width: 600px; height:400px;position:absolut;left:50px;top:100px"></div>
+    <script type="text/javascript">
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(document.getElementById('main'),'chalk');  //要加js名字
+
+var option = {
+  series: {
+    type: 'sankey',
+    layout: 'none',
+    emphasis: {
+      focus: 'adjacency'
+    },
+    data: [
+      {
+        name: 'a'
+      },
+      {
+        name: 'b'
+      },
+      {
+        name: 'a1'
+      },
+      {
+        name: 'a2'
+      },
+      {
+        name: 'b1'
+      },
+      {
+        name: 'c'
+      }
+    ],
+    links: [
+      {
+        source: 'a',
+        target: 'a1',
+        value: 5
+      },
+      {
+        source: 'a',
+        target: 'a2',
+        value: 3
+      },
+      {
+        source: 'b',
+        target: 'b1',
+        value: 8
+      },
+      {
+        source: 'a',
+        target: 'b1',
+        value: 3
+      },
+      {
+        source: 'b1',
+        target: 'a1',
+        value: 1
+      },
+      {
+        source: 'b1',
+        target: 'c',
+        value: 2
+      }
+    ]
+  }
+};
+
+myChart.setOption(option);
+
+
+</script>
+</body>
+</html>
